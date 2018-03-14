@@ -11,7 +11,7 @@
 
     <string name="regex" translatable="false">✲</string>
 
-    <string name="src">sources</string>
+    <string name="src" translatable="false">sources</string>
 
     <string name="My_subs">My Subscriptions</string>
     <string name="sources_title">Sources</string>
@@ -22,160 +22,160 @@
     <string name="Lithuania">Lithuania</string>
     <string name="Lithuania_value" translatable="false">lt</string>
 
-    <string name="UnitedStates">United States</string>
+    <string name="UnitedStates" translatable="false">United States</string>
     <string name="UnitedStates_value" translatable="false">us</string>
 
-    <string name="Argentina">Argentina</string>
+    <string name="Argentina" translatable="false">Argentina</string>
     <string name="Argentina_value" translatable="false">ar</string>
 
-    <string name="Australia">Australia</string>
+    <string name="Australia" translatable="false">Australia</string>
     <string name="Australia_value" translatable="false">au</string>
 
-    <string name="Austria">Austria</string>
+    <string name="Austria" translatable="false">Austria</string>
     <string name="Austria_value" translatable="false">at</string>
 
-    <string name="Belgium">Belgium</string>
+    <string name="Belgium" translatable="false">Belgium</string>
     <string name="Belgium_value" translatable="false">be</string>
 
-    <string name="Brazil">Brazil</string>
+    <string name="Brazil" translatable="false">Brazil</string>
     <string name="Brazil_value" translatable="false">br</string>
 
-    <string name="Bulgaria">Bulgaria</string>
+    <string name="Bulgaria" translatable="false">Bulgaria</string>
     <string name="Bulgaria_value" translatable="false">bg</string>
 
-    <string name="Canada">Canada</string>
+    <string name="Canada" translatable="false">Canada</string>
     <string name="Canada_value" translatable="false">ca</string>
 
-    <string name="China">China</string>
+    <string name="China" translatable="false">China</string>
     <string name="China_value" translatable="false">cn</string>
 
-    <string name="Colombia">Colombia</string>
+    <string name="Colombia" translatable="false">Colombia</string>
     <string name="Colombia_value" translatable="false">co</string>
 
-    <string name="Cuba">Cuba</string>
+    <string name="Cuba" translatable="false">Cuba</string>
     <string name="Cuba_value" translatable="false">cu</string>
 
-    <string name="Czech_Republic">Czech Republic</string>
+    <string name="Czech_Republic" translatable="false">Czech Republic</string>
     <string name="Czech_Republic_value" translatable="false">cz</string>
 
-    <string name="Egypt">Egypt</string>
+    <string name="Egypt" translatable="false">Egypt</string>
     <string name="Egypt_value" translatable="false">eg</string>
 
-    <string name="France">France</string>
+    <string name="France" translatable="false">France</string>
     <string name="France_value" translatable="false">fr</string>
 
-    <string name="Germany">Germany</string>
+    <string name="Germany" translatable="false">Germany</string>
     <string name="Germany_value" translatable="false">de</string>
 
-    <string name="Greece">Greece</string>
+    <string name="Greece" translatable="false">Greece</string>
     <string name="Greece_value" translatable="false">gr</string>
 
-    <string name="Hong_Kong">Hong Kong</string>
+    <string name="Hong_Kong" translatable="false">Hong Kong</string>
     <string name="Hong_Kong_value" translatable="false">hk</string>
 
-    <string name="Hungary">Bulgaria</string>
+    <string name="Hungary" translatable="false">Bulgaria</string>
     <string name="Hungary_value" translatable="false">hu</string>
 
-    <string name="India">India</string>
+    <string name="India" translatable="false">India</string>
     <string name="India_value" translatable="false">in</string>
 
-    <string name="Indonesia">Indonesia</string>
+    <string name="Indonesia" translatable="false">Indonesia</string>
     <string name="Indonesia_value" translatable="false">id</string>
 
-    <string name="Ireland">Ireland</string>
+    <string name="Ireland" translatable="false">Ireland</string>
     <string name="Ireland_value" translatable="false">ie</string>
 
-    <string name="Israel">Israel</string>
+    <string name="Israel" translatable="false">Israel</string>
     <string name="Israel_value" translatable="false">il</string>
 
-    <string name="Italy">Italy</string>
+    <string name="Italy" translatable="false">Italy</string>
     <string name="Italy_value" translatable="false">it</string>
 
-    <string name="Latvia">Latvia</string>
+    <string name="Latvia" translatable="false">Latvia</string>
     <string name="Latvia_value" translatable="false">lv</string>
 
-    <string name="Malaysia">Malaysia</string>
+    <string name="Malaysia" translatable="false">Malaysia</string>
     <string name="Malaysia_value" translatable="false">my</string>
 
-    <string name="Mexico">Mexico</string>
+    <string name="Mexico" translatable="false">Mexico</string>
     <string name="Mexico_value" translatable="false">mx</string>
 
-    <string name="Morocco">Morocco</string>
+    <string name="Morocco" translatable="false">Morocco</string>
     <string name="Morocco_value" translatable="false">ma</string>
 
-    <string name="Netherlands">Netherlands</string>
+    <string name="Netherlands" translatable="false">Netherlands</string>
     <string name="Netherlands_value" translatable="false">nl</string>
 
-    <string name="New_Zealand">New Zealand</string>
+    <string name="New_Zealand" translatable="false">New Zealand</string>
     <string name="New_Zealand_value" translatable="false">nz</string>
 
-    <string name="Nigeria">Nigeria</string>
+    <string name="Nigeria" translatable="false">Nigeria</string>
     <string name="Nigeria_value" translatable="false">ng</string>
 
-    <string name="Norway">Norway</string>
+    <string name="Norway" translatable="false">Norway</string>
     <string name="Norway_value" translatable="false">no</string>
 
-    <string name="Philippines">Philippines</string>
+    <string name="Philippines" translatable="false">Philippines</string>
     <string name="Philippines_value" translatable="false">ph</string>
 
-    <string name="Poland">Poland</string>
+    <string name="Poland" translatable="false">Poland</string>
     <string name="Poland_value" translatable="false">pl</string>
 
-    <string name="Portugal">Portugal</string>
+    <string name="Portugal" translatable="false">Portugal</string>
     <string name="Portugal_value" translatable="false">pt</string>
 
-    <string name="Romania">Romania</string>
+    <string name="Romania" translatable="false">Romania</string>
     <string name="Romania_value" translatable="false">ro</string>
 
-    <string name="Russia">Russia</string>
+    <string name="Russia" translatable="false">Russia</string>
     <string name="Russia_value" translatable="false">ru</string>
 
-    <string name="Saudi_Arabia">Saudi Arabia</string>
+    <string name="Saudi_Arabia" translatable="false">Saudi Arabia</string>
     <string name="Saudi_Arabia_value" translatable="false">sa</string>
 
-    <string name="Serbia">Serbia</string>
+    <string name="Serbia" translatable="false">Serbia</string>
     <string name="Serbia_value" translatable="false">rs</string>
 
-    <string name="Singapore">Singapore</string>
+    <string name="Singapore" translatable="false">Singapore</string>
     <string name="Singapore_value" translatable="false">sg</string>
 
-    <string name="Slovakia">Slovakia</string>
+    <string name="Slovakia" translatable="false">Slovakia</string>
     <string name="Slovakia_value" translatable="false">sk</string>
 
-    <string name="Slovenia">Slovenia</string>
+    <string name="Slovenia" translatable="false">Slovenia</string>
     <string name="Slovenia_value" translatable="false">si</string>
 
-    <string name="South_Africa">South Africa</string>
+    <string name="South_Africa" translatable="false">South Africa</string>
     <string name="South_Africa_value" translatable="false">za</string>
 
-    <string name="South_Korea">South Korea</string>
+    <string name="South_Korea" translatable="false">South Korea</string>
     <string name="South_Korea_value" translatable="false">kr</string>
 
-    <string name="Sweden">Sweden</string>
+    <string name="Sweden" translatable="false">Sweden</string>
     <string name="Sweden_value" translatable="false">se</string>
 
-    <string name="Switzerland">Switzerland</string>
+    <string name="Switzerland" translatable="false">Switzerland</string>
     <string name="Switzerland_value" translatable="false">ch</string>
 
-    <string name="Taiwan">Taiwan</string>
+    <string name="Taiwan" translatable="false">Taiwan</string>
     <string name="Taiwan_value" translatable="false">tw</string>
 
-    <string name="Thailand">Thailand</string>
+    <string name="Thailand" translatable="false">Thailand</string>
     <string name="Thailand_value" translatable="false">th</string>
 
-    <string name="Turkey">Turkey</string>
+    <string name="Turkey" translatable="false">Turkey</string>
     <string name="Turkey_value" translatable="false">tr</string>
 
-    <string name="UAE">UAE</string>
+    <string name="UAE" translatable="false">UAE</string>
     <string name="UAE_value" translatable="false">ae</string>
 
-    <string name="Ukraine">Ukraine</string>
+    <string name="Ukraine" translatable="false">Ukraine</string>
     <string name="Ukraine_value" translatable="false">ua</string>
 
-    <string name="United_Kingdom">United_Kingdom</string>
+    <string name="United_Kingdom" translatable="false">United_Kingdom</string>
     <string name="United_Kingdom_value" translatable="false">gb</string>
 
-    <string name="Venuzuela">Venuzuela</string>
+    <string name="Venuzuela" translatable="false">Venuzuela</string>
     <string name="Venuzuela_value" translatable="false">ve</string>
 
     <string name="Business" translatable="false">business</string>

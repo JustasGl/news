@@ -135,15 +135,6 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
                     }
                 });
                 webas.getSettings().setJavaScriptEnabled(true);
-                webas.setWebViewClient(new WebViewClient() {
-
-                    @Override
-                    public void onReceivedError(WebView view, WebResourceRequest request,
-                                                WebResourceError error) {
-                        super.onReceivedError(view, request, error);
-                        startbrowser(position);
-                    }
-                });
                 webas.loadUrl(marrayList.get(position).getmUrl());
                 webas.setWebChromeClient(new WebChromeClient() {
                     public void onProgressChanged(WebView view, int progress) {

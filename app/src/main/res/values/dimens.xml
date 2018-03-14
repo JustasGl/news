@@ -20,5 +20,8 @@
     <dimen name="hugemarginnpadding">32dp</dimen>
     <dimen name="weusetext">16sp</dimen>
     <dimen name="closeweb">-15dp</dimen>
+    <dimen name="umanopanelheight">32dp</dimen>
+    <dimen name="umanopaddingbottom">20dp</dimen>
+    <dimen name="ummanoshadowheight">16dp</dimen>
 
 </resources>

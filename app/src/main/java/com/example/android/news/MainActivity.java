@@ -233,54 +233,36 @@ public final class MainActivity extends AppCompatActivity {
                 handled = ((topstories_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof business_fragment) {
                 handled = ((business_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof health_fragment) {
                 handled = ((health_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof entertainment_fragment) {
                 handled = ((entertainment_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof favoritestories_fragment) {
                 handled = ((favoritestories_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof science_fragment) {
                 handled = ((science_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof search_fragment) {
@@ -296,27 +278,18 @@ public final class MainActivity extends AppCompatActivity {
                 handled = ((sports_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof technology_fragment) {
                 handled = ((technology_fragment) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             if (f instanceof subscribedfeed) {
                 handled = ((subscribedfeed) f).onBackPressed();
                 if (handled) {
                     break;
-                } else {
-                    finish();
-                    System.exit(0);
                 }
             }
             }
