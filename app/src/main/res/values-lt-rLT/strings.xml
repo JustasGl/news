@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Main">Pagrindinis ekranas</string>
+    <string name="other">Visos sritys</string>
+    <string name="browse">Naršyti</string>
+    <string name="Credits">Naudotos bibliotekos</string>
+    <string name="created_by">Sukurta:</string>
+    <string name="browse_over_5000_news_sources">Naršykite po daugiau nei 5000 šaltinių</string>
+    <string name="searchbarText">Ieškokite temų/straipsnių/šaltinių</string>
+    <string name="drag_up_for">Tempkite į viršų</string>
+    <string name="extended_search">Išplėstinė paieška</string>
+    <string name="amount_of_results">Rezultatų kiekis</string>
+    <string name="sort_by">Rikiuoti pagal:</string>
+    <string name="relevancy">Aktualumą</string>
+    <string name="popularity">Pupuliarumą</string>
+    <string name="published_at">Išleidimo laiką</string>
+    <string name="from">Nuo</string>
+    <string name="click_on_me_and_pick_a_date">Spustelk mane ir išsirink datą</string>
+    <string name="to">Iki</string>
+    <string name="Lithuania">Lietuva</string>
+    <string name="Top">Pagrindiniai įvykiai</string>
+    <string name="Favorites">Mėgstamiausia tema</string>
+    <string name="Search">Paieška</string>
+    <string name="settings_title">Nustatymai</string>
+    <string name="Country">Jūsų šalis</string>
+    <string name="Technology_name">Technologijos</string>
+    <string name="Sports_name">Sportas</string>
+    <string name="Science_name">Mokslas</string>
+    <string name="Health_name">Sveikata</string>
+    <string name="Entertainment_name">Pramogos</string>
+    <string name="Business_name">Verslas</string>
+    <string name="language">Kalba</string>
+    <string name="cate">"Kategorija : "</string>
+    <string name="countr">Šalis :</string>
+    <string name="Fav.topic">Mėgstamiausia tema</string>
+    <string name="results">Rezultatai</string>
+    <string name="favorites_watch_later">Pamėgti/Žiūrėti vėliau</string>
+    <string name="no_saved">Nėra išsaugotų straipsnių</string>
+    <string name="no_watchlater">Nėra pasirinktų skaityti vėliau</string>
+    <string name="librabries_we_use">Naudotos bibliotekos</string>
+    <string name="we_thank_open_source">Žemiau paminėtos bibliotekos, kurios galėjo būti naudojamos „Reporter“ produkto dalyse. Dėkojame viešai prienamo kodo bendruomenei už visus jų įnašus.</string>
+    <string name="My_subs">Prenumeratos</string>
+    <string name="sources_title">Šaltiniai</string>
+    <string name="no_internet">Nėra interneto ryšio</string>
+    <string name="nosubscribed">Nepasirinkote šaltinių</string>
+    <string name="already_subscribed">Jau esate užsiprenumeravęs</string>
+    <string name="havent_subscribed_yet">Dar nesate užsiprenumeravęs</string>
+    <string name="successfuly_unsubscribed">" Prenumerata atšaukta"</string>
+    <string name="successfully_subscribed">" Užprenumeruotas"</string>
+
+</resources>

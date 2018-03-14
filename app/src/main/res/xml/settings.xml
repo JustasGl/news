@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title"
+    >
+
+    <ListPreference
+        android:defaultValue="@string/UnitedStates_value"
+        android:entries="@array/settings_order_by_labels"
+        android:entryValues="@array/settings_order_by_values"
+        android:key="@string/Country"
+        android:title="@string/Country" />
+    <ListPreference
+        android:defaultValue="@string/Fav.topic_default"
+        android:entries="@array/topicsNames"
+        android:entryValues="@array/topics"
+        android:key="@string/Fav.topic"
+        android:title="@string/Fav.topic" />
+</PreferenceScreen>

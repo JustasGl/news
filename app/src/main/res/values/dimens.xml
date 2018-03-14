@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="browseover5000TEXTSIZE">22sp</dimen>
+    <dimen name="sizeofSourceTITLE">32sp</dimen>
+    <dimen name="averageOfpaddingnmargin">8dp</dimen>
+    <dimen name="sizeOFWeightedItem">0dp</dimen>
+    <dimen name="sizeOfWebview">400dp</dimen>
+    <dimen name="marginofwebview">32dp</dimen>
+    <dimen name="paddingTopnbottomofarticles">10dp</dimen>
+    <dimen name="articlesimageheight">200dp</dimen>
+    <dimen name="paddingofdateRightnLKeft">16dp</dimen>
+    <dimen name="nameofArticle">16sp</dimen>
+    <dimen name="plusaverageofpaddingnmargin">16dp</dimen>
+    <dimen name="heightofNavHEADER">140dp</dimen>
+    <dimen name="searchbarSize">50dp</dimen>
+    <dimen name="textsizeInsearchBAr">18sp</dimen>
+    <dimen name="minmargin">4dp</dimen>
+    <dimen name="extendedsearchTextsize">16sp</dimen>
+    <dimen name="dragupsize">8sp</dimen>
+    <dimen name="hugemarginnpadding">32dp</dimen>
+    <dimen name="weusetext">16sp</dimen>
+    <dimen name="closeweb">-15dp</dimen>
+
+</resources>

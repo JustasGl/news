@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cardview_dark_background"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:id="@+id/toolbar"
+    android:visibility="visible"
+    app:layout_scrollFlags="enterAlways|scroll">
+    <ImageView
+        android:id="@+id/subscribe"
+        style="@style/wrapnwrap"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_subscribe" />
+
+</android.support.v7.widget.Toolbar>
