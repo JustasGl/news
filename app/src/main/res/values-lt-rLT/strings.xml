@@ -12,7 +12,7 @@
     <string name="amount_of_results">Rezultatų kiekis</string>
     <string name="sort_by">Rikiuoti pagal:</string>
     <string name="relevancy">Aktualumą</string>
-    <string name="popularity">Pupuliarumą</string>
+    <string name="popularity">Populiarumą</string>
     <string name="published_at">Išleidimo laiką</string>
     <string name="from">Nuo</string>
     <string name="click_on_me_and_pick_a_date">Spustelk mane ir išsirink datą</string>
