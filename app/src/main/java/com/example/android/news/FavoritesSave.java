@@ -1,5 +1,6 @@
 package com.example.android.news;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -7,20 +8,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Justas on 2/27/2018.
+ * Created by Justas on 3/1/2018.
  */
 
-public class bookmartarticlesClass {
+public class FavoritesSave {
     Context mcontext;
-    ArrayList<String> titles = new ArrayList<>(); // Articles Titles list
-    ArrayList<String> imgUrls = new ArrayList<>(); // Articles Image Urls list
-    ArrayList<String> description = new ArrayList<>();// Articles Description list
-    ArrayList<String> url = new ArrayList<>();// Articles Urls list
-    ArrayList<String> date = new ArrayList<>();// Articles dates list
-    ArrayList<String> author = new ArrayList<>();// Articles publishers list
-    ArrayList<String> humanauthors = new ArrayList<>();// Articles authors list
+    ArrayList<String> titles = new ArrayList<>();
+    ArrayList<String> imgUrls = new ArrayList<>();
+    ArrayList<String> description = new ArrayList<>();
+    ArrayList<String> url = new ArrayList<>();
+    ArrayList<String> date = new ArrayList<>();
+    ArrayList<String> author = new ArrayList<>();
+    ArrayList<String> humanauthors = new ArrayList<>();
 
-    public bookmartarticlesClass(Context context) {
+    public FavoritesSave(Context context) {
         mcontext = context;
         loadtitles();
         loadimgUrls();
@@ -29,10 +30,10 @@ public class bookmartarticlesClass {
         loadauthors();
         loadurls();
         loadhumanauthors();
-        //When costructor get's called all lists get's loaded, now i would do this with database, but back then didin't knew about databases...
     }
 
     public void put(String title, String imgurl, String des, String urls, String dates, String authors, String humanauthor) {
+
         titles.add(title);
         imgUrls.add(imgurl);
         description.add(des);
@@ -40,8 +41,6 @@ public class bookmartarticlesClass {
         date.add(dates);
         author.add(authors);
         humanauthors.add(humanauthor);
-
-        //Adds item to list and then saves it
 
         savetitles();
         saveimgUrls();
@@ -64,8 +63,6 @@ public class bookmartarticlesClass {
         date.remove(dates);
         author.remove(authors);
         humanauthors.remove(humanauthor);
-
-        //Removes certain item from lists and then saves them
 
         saveimgUrls();
         savetitles();
@@ -92,19 +89,21 @@ public class bookmartarticlesClass {
         return url;
     }
 
-    public ArrayList<String> getDate() {
-        return date;
+    public ArrayList<String> getHumanauthors() {
+        return humanauthors;
     }
 
-    public ArrayList<String> gethumanauthors() {
-        return humanauthors;
+    public ArrayList<String> getDate()
+
+    {
+        return date;
     }
 
     public ArrayList<String> getAuthor() {
         return author;
     }
 
-    public void clearList() { //Currently not used but I'll leavit for the future updates
+    public void clearList() {
         titles.clear();
         imgUrls.clear();
         description.clear();
@@ -112,8 +111,6 @@ public class bookmartarticlesClass {
         date.clear();
         author.clear();
         humanauthors.clear();
-
-        //Clears lists and then saves them
 
         saveimgUrls();
         savetitles();
@@ -126,26 +123,26 @@ public class bookmartarticlesClass {
 
     public void savetitles() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String s : titles) { //Builds one large string out off list and seperates with ✲ symbol (Choose this becouse i never saw any newspaper use it.
+        for (String s : titles) {
             stringBuilder.append(s);
             stringBuilder.append(mcontext.getString(R.string.regex));
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFS", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("titles", stringBuilder.toString()).apply();
+        editor.putString("titles1", stringBuilder.toString()).apply();
     }
 
     public void loadtitles() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFS", 0);
-        String namesString = preferences.getString("titles", "");
+        String namesString = preferences.getString("titles1", "");
         String[] items = namesString.split(mcontext.getString(R.string.regex));
         ArrayList<String> vardai = new ArrayList<>();
         vardai.addAll(Arrays.asList(items));
-        try { //Had some problem with this part, because there sometimes been symbol/empty sapce/null inside string so had to check it
+        try {
             String a = vardai.get(0);
             char c = a.charAt(0);
         } catch (Exception IndexOutOfBoundsException) {
-            vardai.clear(); // if there is that symbol/null then we clear the list somehow this helps :D
+            vardai.clear();
         }
         titles = vardai;
     }
@@ -158,12 +155,12 @@ public class bookmartarticlesClass {
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("imgUrls", stringBuilder.toString()).apply();
+        editor.putString("imgUrls1", stringBuilder.toString()).apply();
     }
 
     public void loadimgUrls() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
-        String namesString = preferences.getString("imgUrls", "");
+        String namesString = preferences.getString("imgUrls1", "");
 
         String[] items = namesString.split(mcontext.getString(R.string.regex));
         ArrayList<String> imig = new ArrayList<>();
@@ -174,7 +171,6 @@ public class bookmartarticlesClass {
         } catch (Exception IndexOutOfBoundsException) {
             imig.clear();
         }
-
 
         imgUrls = imig;
     }
@@ -187,24 +183,24 @@ public class bookmartarticlesClass {
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("description", stringBuilder.toString()).apply();
+        editor.putString("description1", stringBuilder.toString()).apply();
     }
 
     public void loaddescription() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
-        String namesString = preferences.getString("description", "");
+        String namesString = preferences.getString("description1", "");
 
         String[] items = namesString.split(mcontext.getString(R.string.regex));
-        ArrayList<String> descriptions = new ArrayList<>();
-        descriptions.addAll(Arrays.asList(items));
+        ArrayList<String> desai = new ArrayList<>();
+        desai.addAll(Arrays.asList(items));
         try {
-            String a = descriptions.get(0);
+            String a = desai.get(0);
             char c = a.charAt(0);
         } catch (Exception IndexOutOfBoundsException) {
-            descriptions.clear();
+            desai.clear();
         }
 
-        description = descriptions;
+        description = desai;
     }
 
     public void saveurls() {
@@ -215,12 +211,12 @@ public class bookmartarticlesClass {
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("urls", stringBuilder.toString()).apply();
+        editor.putString("urls1", stringBuilder.toString()).apply();
     }
 
     public void loadurls() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
-        String namesString = preferences.getString("urls", "");
+        String namesString = preferences.getString("urls1", "");
 
         String[] items = namesString.split(mcontext.getString(R.string.regex));
         ArrayList<String> reiksmes = new ArrayList<>();
@@ -243,12 +239,12 @@ public class bookmartarticlesClass {
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("dates", stringBuilder.toString()).apply();
+        editor.putString("dates1", stringBuilder.toString()).apply();
     }
 
     public void loaddates() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
-        String namesString = preferences.getString("dates", "");
+        String namesString = preferences.getString("dates1", "");
 
         String[] items = namesString.split(mcontext.getString(R.string.regex));
         ArrayList<String> reiksmes = new ArrayList<>();
@@ -271,12 +267,12 @@ public class bookmartarticlesClass {
         }
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("authors", stringBuilder.toString()).apply();
+        editor.putString("authors1", stringBuilder.toString()).apply();
     }
 
     public void loadauthors() {
         SharedPreferences preferences = mcontext.getSharedPreferences("PREFSofValues", 0);
-        String namesString = preferences.getString("authors", "");
+        String namesString = preferences.getString("authors1", "");
 
         String[] items = namesString.split(mcontext.getString(R.string.regex));
         ArrayList<String> reiksmes = new ArrayList<>();
@@ -315,6 +311,7 @@ public class bookmartarticlesClass {
         } catch (Exception IndexOutOfBoundsException) {
             reiksmes.clear();
         }
+
 
         humanauthors = reiksmes;
     }

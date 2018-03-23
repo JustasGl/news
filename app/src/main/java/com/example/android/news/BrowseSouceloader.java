@@ -1,11 +1,8 @@
 package com.example.android.news;
 
-import android.support.v4.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import com.example.android.news.datafletcher;
+import android.support.v4.content.AsyncTaskLoader;
+
 import java.util.List;
 
 /**

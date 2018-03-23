@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     style="@style/matchnmatch">
+
     <fragment
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/navigation"
-        app:menu="@menu/navmenu"
         android:layout_gravity="start"
-        app:headerLayout="@layout/navigationheader"/>
+        app:headerLayout="@layout/navigationheader"
+        app:menu="@menu/navmenu" />
 </android.support.v4.widget.DrawerLayout>

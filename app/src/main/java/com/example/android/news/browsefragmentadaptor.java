@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * Created by Justas on 2/28/2018.
  */
 
-public class browsefragmentadaptor  extends FragmentStatePagerAdapter {
+public class browsefragmentadaptor extends FragmentStatePagerAdapter { // Couldn't change name of the Class because of error after Refactoring
 
     private Context mContext;
 
@@ -18,6 +18,7 @@ public class browsefragmentadaptor  extends FragmentStatePagerAdapter {
         super(fm);
         mContext = context;
     }
+
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
@@ -32,16 +33,17 @@ public class browsefragmentadaptor  extends FragmentStatePagerAdapter {
     public int getCount() {
         return 2;
     }
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         super.destroyItem(container, position, object);
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
             return mContext.getString(R.string.My_subs);
-        }
-        else return  mContext.getString(R.string.sources_title);
+        } else return mContext.getString(R.string.sources_title);
     }
 }
 

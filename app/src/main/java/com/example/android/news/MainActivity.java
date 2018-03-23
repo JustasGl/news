@@ -1,53 +1,30 @@
 package com.example.android.news;
 
 
-import android.app.Fragment;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.internal.Util;
 
 import static com.example.android.news.mAdapter.webatctive;
 
 public final class MainActivity extends AppCompatActivity {
     FragmentPageAdaptor adaptor;
     FragmentOtherToicsAdaptor adapter;
-    FAVnLATERadapter faVnLATERadapter;
+    FavoritesAndWatchLaterFragmentdAdaptor favoritesAndWatchLaterFragmentdAdaptor;
     browsefragmentadaptor browsefragmentadaptor;
     TabLayout tabLayout;
     int LoaderID = 0;
@@ -70,14 +47,14 @@ public final class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recycleradaptor = new RecyclermAdaptor(this, new ArrayList<browseObject>());
+        recycleradaptor = new BrowseRecyclerAdaptor(this, new ArrayList<browseObject>());
         recyclerView.setAdapter(recycleradaptor);
         browsefragmentadaptor = new browsefragmentadaptor(getApplicationContext(), getSupportFragmentManager());
-        faVnLATERadapter = new FAVnLATERadapter(getApplicationContext(), getSupportFragmentManager());
+        favoritesAndWatchLaterFragmentdAdaptor = new FavoritesAndWatchLaterFragmentdAdaptor(getSupportFragmentManager());
         viewPager = findViewById(R.id.viewpager);
         viewPager1 = findViewById(R.id.viewpager1);
         browsePager = findViewById(R.id.browseviewpager);
-        adaptor = new FragmentPageAdaptor(this, getSupportFragmentManager());
+        adaptor = new FragmentPageAdaptor(getSupportFragmentManager());
         viewPager.setAdapter(adaptor);
         adapter = new FragmentOtherToicsAdaptor(this, getSupportFragmentManager());
         tabLayout = findViewById(R.id.sliding_tabs);
@@ -90,14 +67,16 @@ public final class MainActivity extends AppCompatActivity {
         nv = findViewById(R.id.navigation);
         menu = findViewById(R.id.menu);
         menu.setVisibility(View.VISIBLE);
-        Log.i("Viewpager", viewPager.getCurrentItem()+"");
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageScrollStateChanged(int state) {}
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrollStateChanged(int state) {
+            }
+
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             public void onPageSelected(int position) {
                 webatctive = false;
-                if(viewPager.getCurrentItem()==2|| viewPager.getCurrentItem()==3)
+                if (viewPager.getCurrentItem() == 2 || viewPager.getCurrentItem() == 3) // Hiddes menu button in 2 (Search) and 3 (Settings) fragment becouse it may cover content
                     menu.setVisibility(View.GONE);
                 else
                     menu.setVisibility(View.VISIBLE);
@@ -119,7 +98,7 @@ public final class MainActivity extends AppCompatActivity {
                 super.onDrawerOpened(drawerView);
             }
         };
-        drawer.setDrawerListener(mDrawerToggle);
+        drawer.addDrawerListener(mDrawerToggle);
         tabLayout.getTabAt(0).setIcon(R.drawable.main_selector1);
         tabLayout.getTabAt(1).setIcon(R.drawable.main_selector2);
         tabLayout.getTabAt(2).setIcon(R.drawable.main_selector3);
@@ -185,7 +164,7 @@ public final class MainActivity extends AppCompatActivity {
                         menu.setVisibility(View.VISIBLE);
                         for (int i = 0; i < 5; i++) nv.getMenu().getItem(i).setChecked(false);
                         nv.getMenu().getItem(2).setChecked(true);
-                        viewPager.setAdapter(faVnLATERadapter);
+                        viewPager.setAdapter(favoritesAndWatchLaterFragmentdAdaptor);
                         tabLayout.setupWithViewPager(viewPager);
                         viewPager.setVisibility(View.VISIBLE);
                         credits.setVisibility(View.GONE);
@@ -220,78 +199,76 @@ public final class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if(drawer.isDrawerOpen(nv))
-        {
+        if (drawer.isDrawerOpen(nv)) {
             drawer.closeDrawers();
-        }
-        else {
-        List fragmentList = getSupportFragmentManager().getFragments();
+        } else {
+            List fragmentList = getSupportFragmentManager().getFragments();
 
-        boolean handled = false;
-        for (Object f : fragmentList) {
-            if (f instanceof topstories_fragment) {
-                handled = ((topstories_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+            boolean handled = false;
+            for (Object f : fragmentList) {
+                if (f instanceof topstories_fragment) {
+                    handled = ((topstories_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof business_fragment) {
-                handled = ((business_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof business_fragment) {
+                    handled = ((business_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof health_fragment) {
-                handled = ((health_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof health_fragment) {
+                    handled = ((health_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof entertainment_fragment) {
-                handled = ((entertainment_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof entertainment_fragment) {
+                    handled = ((entertainment_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof favoritestories_fragment) {
-                handled = ((favoritestories_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof favoritestories_fragment) {
+                    handled = ((favoritestories_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof science_fragment) {
-                handled = ((science_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof science_fragment) {
+                    handled = ((science_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof search_fragment) {
-                handled = ((search_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
-                } else {
-                    finish();
-                    System.exit(0);
+                if (f instanceof search_fragment) {
+                    handled = ((search_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    } else {
+                        finish();
+                        System.exit(0);
+                    }
                 }
-            }
-            if (f instanceof sports_fragment) {
-                handled = ((sports_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof sports_fragment) {
+                    handled = ((sports_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof technology_fragment) {
-                handled = ((technology_fragment) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof technology_fragment) {
+                    handled = ((technology_fragment) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
-            if (f instanceof subscribedfeed) {
-                handled = ((subscribedfeed) f).onBackPressed();
-                if (handled) {
-                    break;
+                if (f instanceof subscribedfeed) {
+                    handled = ((subscribedfeed) f).onBackPressed();
+                    if (handled) {
+                        break;
+                    }
                 }
-            }
             }
         }
     }

@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".settings" />
-        <activity android:name=".soucearticles"
+        <activity
+            android:name=".soucearticles"
             android:parentActivityName=".soucearticles"></activity>
     </application>
 

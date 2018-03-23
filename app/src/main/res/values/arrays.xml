@@ -113,13 +113,13 @@
     </string-array>
 
     <string-array name="topics">
-    <item>@string/Business</item>
-    <item>@string/Entertainment</item>
-    <item>@string/Health </item>
-    <item>@string/Science</item>
-    <item>@string/Sports</item>
-    <item>@string/Technology</item>
-</string-array>
+        <item>@string/Business</item>
+        <item>@string/Entertainment</item>
+        <item>@string/Health </item>
+        <item>@string/Science</item>
+        <item>@string/Sports</item>
+        <item>@string/Technology</item>
+    </string-array>
     <string-array name="topicsNames">
         <item>@string/Business_name</item>
         <item>@string/Entertainment_name</item>

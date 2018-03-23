@@ -1,82 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/listcolor"
-    android:paddingTop="@dimen/averageOfpaddingnmargin"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/averageOfpaddingnmargin"
-    android:orientation="vertical">
+    android:paddingTop="@dimen/averageOfpaddingnmargin">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/navigateto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
-        style="@style/matchnwrap"
-        android:id="@+id/name"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sizeofSourceTITLE"/>
-    <TextView
-        style="@style/matchnwrap"
-        android:id="@+id/descripton"
-        android:textColor="@color/textSoucesDescription"
-        android:padding="@dimen/averageOfpaddingnmargin"/>
-    <LinearLayout
-        style="@style/matchnwrap">
-        <LinearLayout
-        android:layout_width="@dimen/sizeOFWeightedItem"
-        android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/averageOfpaddingnmargin"
-        android:layout_weight="1">
-        <ImageView
-            style="@style/imageViewInarticles"
-            android:src="@drawable/category"/>
+
         <TextView
-            style="@style/textinArticles"
-            android:id="@+id/category"
-            />
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="@dimen/sizeOFWeightedItem"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <ImageView
-                style="@style/imageViewInarticles"
-                android:src="@drawable/country"/>
-            <TextView
-                style="@style/textinArticles"
-                android:id="@+id/country"
-                />
+            android:id="@+id/name"
+            style="@style/matchnwrap"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sizeofSourceTITLE" />
+
+        <TextView
+            android:id="@+id/descripton"
+            style="@style/matchnwrap"
+            android:padding="@dimen/averageOfpaddingnmargin"
+            android:textColor="@color/textSoucesDescription" />
+
+        <LinearLayout style="@style/matchnwrap">
+
+            <LinearLayout
+                android:layout_width="@dimen/sizeOFWeightedItem"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/averageOfpaddingnmargin"
+                android:layout_weight="1">
+
+                <ImageView
+                    style="@style/imageViewInarticles"
+                    android:src="@drawable/category" />
+
+                <TextView
+                    android:id="@+id/category"
+                    style="@style/textinArticles" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/sizeOFWeightedItem"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    style="@style/imageViewInarticles"
+                    android:src="@drawable/country" />
+
+                <TextView
+                    android:id="@+id/country"
+                    style="@style/textinArticles" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/sizeOFWeightedItem"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/averageOfpaddingnmargin"
+                android:layout_weight="1">
+
+                <ImageView
+                    style="@style/imageViewInarticles"
+                    android:src="@drawable/language" />
+
+                <TextView
+                    android:id="@+id/language"
+                    style="@style/textinArticles" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="@dimen/sizeOFWeightedItem"
-            android:layout_marginRight="@dimen/averageOfpaddingnmargin"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <ImageView
-                style="@style/imageViewInarticles"
-                android:src="@drawable/language"/>
-            <TextView
-                 style="@style/textinArticles"
-                android:id="@+id/language"
-                />
-        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+
     <ImageButton
-        android:layout_marginTop="@dimen/averageOfpaddingnmargin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/subscribe"
-        android:src="@drawable/ic_subscribe"/>
-    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/averageOfpaddingnmargin"
+        android:src="@drawable/ic_subscribe" />
+
+    <ImageButton
         android:id="@+id/unsub"
-        android:src="@drawable/ic_minus"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_minus" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/seperatorcolor"/>
+        android:background="@color/seperatorcolor" />
 </LinearLayout>

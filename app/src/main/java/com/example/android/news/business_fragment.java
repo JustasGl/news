@@ -1,15 +1,10 @@
 package com.example.android.news;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,13 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,22 +27,25 @@ import java.util.List;
  * Created by Justas on 2/19/2018.
  */
 
-public class business_fragment extends Fragment implements  LoaderManager.LoaderCallbacks<List<article>> {
-    String country="",test="";
-    WebView web;
-    ProgressBar pbar;
+public class business_fragment extends Fragment implements LoaderManager.LoaderCallbacks<List<article>> {
+    String country = "", test = "";
+    WebView web; // WebView
+    ProgressBar pbar; //ProgressBar that indicates how mutch of a page has been loaded
+    SwipeRefreshLayout swipeRefreshLayout; // SwipeRefreshLayout
+    mAdapter adapter; // Recycler Adapter for articles
+    int LoaderID = 3;
+    ImageView closeweb;//X button for closing WebView
+    TextView errortext; // being displayed ex: when there is no internet
+    ImageView errorimage;// being displayed ex: when there is no internet
+    Animation zoomin, zoomout; // Animations for WebView
+    RelativeLayout weblayout;
+    RecyclerView list;
+    String URL = "https://newsapi.org/v2/top-headlines?"; // starting point of url
+    private TextView emptyView;
+
     public business_fragment() {
     }
-    SwipeRefreshLayout swipeRefreshLayout;
-    mAdapter adapter;
-    int LoaderID = 3;
-    ImageView closeweb;
-    TextView errortext;
-    ImageView errorimage;
-    Animation zoomin,zoomout;
-    RelativeLayout weblayout;
-     RecyclerView list;
-    String URL = "https://newsapi.org/v2/top-headlines?";
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.contentplace, container, false);
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh);
@@ -69,6 +62,7 @@ public class business_fragment extends Fragment implements  LoaderManager.Loader
         web = rootView.findViewById(R.id.webview);
         closeweb = rootView.findViewById(R.id.closeweb);
         pbar = rootView.findViewById(R.id.pB1);
+        emptyView = rootView.findViewById(R.id.empty_view);
         errorimage = rootView.findViewById(R.id.alertpic);
         errortext = rootView.findViewById(R.id.alerttext);
         list = rootView.findViewById(R.id.recyclerview);
@@ -78,32 +72,35 @@ public class business_fragment extends Fragment implements  LoaderManager.Loader
         isinternet();
         return rootView;
     }
-    public void refresh()
-    {
+
+    public void refresh() {
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(LoaderID, null, this);
 
     }
-    private void isinternet()
-    {
-        if (!Utils.isNetworkAvailable(getContext()))
-        {
+
+    private void isinternet() {
+        if (!Utils.isNetworkAvailable(getContext())) {
             errorimage.setVisibility(View.VISIBLE);
             errortext.setVisibility(View.VISIBLE);
             errorimage.setImageResource(R.drawable.country);
             errortext.setText(R.string.no_internet);
+        } else {
+            errortext.setVisibility(View.GONE);
+            errorimage.setVisibility(View.GONE);
         }
-        else {errortext.setVisibility(View.GONE); errorimage.setVisibility(View.GONE);}
     }
+
     public void onResume() {
         super.onResume();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         test = sharedPrefs.getString(getString(R.string.Country), getString(R.string.Country_default));
-        if(!test.equals(country)&& !test.equals("")) {
+        if (!test.equals(country) && !test.equals("")) {
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.restartLoader(LoaderID, null, this);
         }
     }
+
     @Override
     public Loader<List<article>> onCreateLoader(int i, Bundle bundle) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -124,19 +121,26 @@ public class business_fragment extends Fragment implements  LoaderManager.Loader
     public void onLoadFinished(Loader<List<article>> loader, List<article> articles) {
         swipeRefreshLayout.setRefreshing(false);
         ArrayList<article> artcl = (ArrayList<article>) articles;
-        adapter = new mAdapter(getActivity(), artcl,weblayout,web,pbar,list,closeweb);
-        list.setAdapter(adapter);
+        if (artcl != null) {
+            if (artcl.isEmpty()) {
+                list.setVisibility(View.GONE);
+                emptyView.setVisibility(View.VISIBLE);
+            } else {
+                adapter = new mAdapter(getActivity(), artcl, weblayout, web, pbar, list, closeweb);
+                list.setAdapter(adapter);
+            }
+        }
     }
+
     @Override
     public void onLoaderReset(Loader<List<article>> loader) {
     }
+
     public boolean onBackPressed() {
-        if(adapter.isactiveweb())
-        {
+        if (adapter.isactiveweb()) {
             adapter.clearwebview();
             return true;
-        }
-        else
+        } else
             return false;
     }
 }

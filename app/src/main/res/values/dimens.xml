@@ -23,5 +23,7 @@
     <dimen name="umanopanelheight">32dp</dimen>
     <dimen name="umanopaddingbottom">20dp</dimen>
     <dimen name="ummanoshadowheight">16dp</dimen>
+    <dimen name="paddingaverage">8dp</dimen>
+    <dimen name="textoferror">32sp</dimen>
 
 </resources>

@@ -3,129 +3,144 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
-    style="@style/matchnmatch"
-    >
+    style="@style/matchnmatch">
+
     <FrameLayout
         android:id="@+id/content_frame"
-        style="@style/matchnmatch"
-        >
-        <LinearLayout
-           style="@style/matchnmatch"
-            android:id="@+id/browsing">
-            <android.support.v7.widget.RecyclerView
-                style="@style/matchnmatch"
-                android:id="@+id/recyclerview"/>
-        </LinearLayout>
-    <RelativeLayout
-        style="@style/matchnmatch"
-        android:orientation="vertical"
-        android:background="@color/fullytransperent">
-        <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@color/creditsBack"
-            android:id="@+id/credits">
-        <LinearLayout
-            style="@style/matchnmatch"
-            android:orientation="vertical"
-            tools:ignore="ExtraText"
-            android:layout_margin="@dimen/averageOfpaddingnmargin">
+        style="@style/matchnmatch">
 
-            <TextView
-                style="@style/matchnwrap"
-                android:textAlignment="center"
-                android:textSize="@dimen/sizeofSourceTITLE"
-                android:text="@string/librabries_we_use"/>
-            <TextView
-                style="@style/matchnwrap"
-                android:text="@string/we_thank_open_source"
-                android:layout_margin="@dimen/averageOfpaddingnmargin"
-                android:textAlignment="center"
-                android:textSize="@dimen/weusetext"
-                />
-            <TextView
-                style="@style/name_library"
-                android:text="@string/appcompat"/>
-            <TextView
-                style="@style/library"
-                android:text="@string/appcompat_library"/>
-        <TextView
-           style="@style/name_library"
-            android:text="@string/picasso" />
-        <TextView
-            style="@style/library"
-            android:text="@string/picasso_library"/>
-            <TextView
-                style="@style/name_library"
-                android:text="@string/recyclerview" />
-            <TextView
-                style="@style/library"
-                android:text="@string/license_RecyclerVIew"
-                android:layout_marginBottom="@dimen/averageOfpaddingnmargin"/>
-            <TextView
-                style="@style/name_library"
-                android:text="@string/okhttp" />
-            <TextView
-                style="@style/library"
-                android:text="@string/okhttp_license"
-                android:layout_marginBottom="@dimen/averageOfpaddingnmargin"/>
-            <TextView
-                style="@style/name_library"
-                android:text="@string/SlidingUpPanel" />
-            <TextView
-                style="@style/library"
-                android:text="@string/SlidingUpPanel_license"
-                android:layout_marginBottom="@dimen/plusaverageofpaddingnmargin"
-                />
+        <LinearLayout
+            android:id="@+id/browsing"
+            style="@style/matchnmatch">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                style="@style/matchnmatch" />
         </LinearLayout>
-        </ScrollView>
+
         <RelativeLayout
-           style="@style/matchnmatch"
+            style="@style/matchnmatch"
+            android:background="@color/fullytransperent"
             android:orientation="vertical">
 
-            <android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs"
-            style="@style/matchnwrap"
-            android:background="@color/black"
-            app:tabTextColor="@color/white"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabMode="fixed" />
+            <ScrollView
+                android:id="@+id/credits"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/creditsBack"
+                android:visibility="gone">
 
-            <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            style="@style/matchnmatch"
-                android:layout_below="@+id/sliding_tabs"
+                <LinearLayout
+                    style="@style/matchnmatch"
+                    android:layout_margin="@dimen/averageOfpaddingnmargin"
+                    android:orientation="vertical"
+                    tools:ignore="ExtraText">
 
-            />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager1"
-            style="@style/matchnmatch"
-            android:layout_below="@+id/sliding_tabs"
-            android:visibility="gone" />
-<android.support.v4.view.ViewPager
-   style="@style/matchnmatch"
-    android:visibility="gone"
-    android:layout_below="@+id/sliding_tabs"
-    android:id="@+id/browseviewpager">
-</android.support.v4.view.ViewPager>
-            <ImageView
-                android:id="@+id/menu"
-                style="@style/wrapnwrap"
-                android:src="@drawable/ic_menu"
-                android:layout_below="@+id/sliding_tabs"
-                />
+                    <TextView
+                        style="@style/matchnwrap"
+                        android:text="@string/librabries_we_use"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/sizeofSourceTITLE" />
+
+                    <TextView
+                        style="@style/matchnwrap"
+                        android:layout_margin="@dimen/averageOfpaddingnmargin"
+                        android:text="@string/we_thank_open_source"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/weusetext" />
+
+                    <TextView
+                        style="@style/name_library"
+                        android:text="@string/appcompat" />
+
+                    <TextView
+                        style="@style/library"
+                        android:text="@string/appcompat_library" />
+
+                    <TextView
+                        style="@style/name_library"
+                        android:text="@string/picasso" />
+
+                    <TextView
+                        style="@style/library"
+                        android:text="@string/picasso_library" />
+
+                    <TextView
+                        style="@style/name_library"
+                        android:text="@string/recyclerview" />
+
+                    <TextView
+                        style="@style/library"
+                        android:layout_marginBottom="@dimen/averageOfpaddingnmargin"
+                        android:text="@string/license_RecyclerVIew" />
+
+                    <TextView
+                        style="@style/name_library"
+                        android:text="@string/okhttp" />
+
+                    <TextView
+                        style="@style/library"
+                        android:layout_marginBottom="@dimen/averageOfpaddingnmargin"
+                        android:text="@string/okhttp_license" />
+
+                    <TextView
+                        style="@style/name_library"
+                        android:text="@string/SlidingUpPanel" />
+
+                    <TextView
+                        style="@style/library"
+                        android:layout_marginBottom="@dimen/plusaverageofpaddingnmargin"
+                        android:text="@string/SlidingUpPanel_license" />
+                </LinearLayout>
+            </ScrollView>
+
+            <RelativeLayout
+                style="@style/matchnmatch"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/sliding_tabs"
+                    style="@style/matchnwrap"
+                    android:background="@color/black"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@color/colorAccent"
+                    app:tabTextColor="@color/white" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    style="@style/matchnmatch"
+                    android:layout_below="@+id/sliding_tabs"
+
+                    />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager1"
+                    style="@style/matchnmatch"
+                    android:layout_below="@+id/sliding_tabs"
+                    android:visibility="gone" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/browseviewpager"
+                    style="@style/matchnmatch"
+                    android:layout_below="@+id/sliding_tabs"
+                    android:visibility="gone"></android.support.v4.view.ViewPager>
+
+                <ImageView
+                    android:id="@+id/menu"
+                    style="@style/wrapnwrap"
+                    android:layout_below="@+id/sliding_tabs"
+                    android:src="@drawable/ic_menu" />
+            </RelativeLayout>
+
         </RelativeLayout>
-
-    </RelativeLayout>
     </FrameLayout>
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/navigation"
-        app:menu="@menu/navmenu"
         android:layout_gravity="start"
-        app:headerLayout="@layout/navigationheader"/>
+        app:headerLayout="@layout/navigationheader"
+        app:menu="@menu/navmenu" />
 </android.support.v4.widget.DrawerLayout>
 

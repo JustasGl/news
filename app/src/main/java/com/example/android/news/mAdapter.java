@@ -4,32 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -39,8 +32,9 @@ import java.util.ArrayList;
  * Created by Justas on 2/22/2018.
  */
 
-public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
+public class mAdapter extends RecyclerView.Adapter<mAdapter.MyViewHolder> { // Adapter for articles
 
+    static Boolean webatctive = false; // Used to track weather WebView is active or not for back button click if WebView is active then we close it with back button click else close activity or something else
     Context mcontext;
     ArrayList<article> marrayList = new ArrayList<>();
     ArrayList<String> titiles = new ArrayList<>();
@@ -50,11 +44,11 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
     Animation zoomin, zoomout;
     ProgressBar pbar;
     RecyclerView list;
-    static Boolean webatctive = false;
     bookmartarticlesClass bookmart;
-    FAVORITEsave fav;
+    FavoritesSave fav;
     ImageView closeweb;
-    mAdapter(Context context, ArrayList<article> arrayList, RelativeLayout weblayout, WebView web, ProgressBar progressBar, RecyclerView listView,ImageView closeweb) {
+
+    mAdapter(Context context, ArrayList<article> arrayList, RelativeLayout weblayout, WebView web, ProgressBar progressBar, RecyclerView listView, ImageView closeweb) {
 
         marrayList = arrayList;
         mcontext = context;
@@ -65,7 +59,7 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
         pbar = progressBar;
         list = listView;
         bookmart = new bookmartarticlesClass(mcontext);
-        fav = new FAVORITEsave(mcontext);
+        fav = new FavoritesSave(mcontext);
         webatctive = false;
         this.closeweb = closeweb;
     }
@@ -106,10 +100,16 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
         else {
             holder.date.setVisibility(View.VISIBLE);
             holder.data = marrayList.get(position).getmDateP();
-            holder.parts = holder.data.split("T");
+            holder.parts = holder.data.split("T"); //Splits date and time in two seperate Strings and removes T and Z
             holder.parts[1] = holder.parts[1].replace("Z", "");
             holder.date.setText(holder.parts[1]);
             holder.time.setText(holder.parts[0]);
+        }
+        if (marrayList.get(position).getmHumanAuthor().equals("null") || marrayList.get(position).getmHumanAuthor() == null || marrayList.get(position).getmHumanAuthor().equals("") || marrayList.get(position).getmHumanAuthor().isEmpty()) {
+            holder.humanauthor.setVisibility(View.GONE);
+        } else {
+            holder.humanauthor.setVisibility(View.VISIBLE);
+            holder.humanauthor.setText(marrayList.get(position).getmHumanAuthor());
         }
         holder.imgage.setVisibility(View.VISIBLE);
         holder.frame.setOnClickListener(new View.OnClickListener() {
@@ -165,13 +165,13 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
         });
         holder.laterbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // Checks whether user has already clicked LATERBUTTON if yes then changes it color to Pink
                 titiles = bookmart.getTitles();
                 if (!titiles.contains(marrayList.get(position).getMtitle())) {
-                    bookmart.put(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor());
+                    bookmart.put(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor(), marrayList.get(position).getmHumanAuthor());
                     holder.laterbutton.setBackgroundColor(ResourcesCompat.getColor(mcontext.getResources(), R.color.colorAccent, null));
                 } else {
-                    bookmart.remove(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor());
+                    bookmart.remove(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor(), marrayList.get(position).getmHumanAuthor());
                     holder.laterbutton.setBackgroundColor(ResourcesCompat.getColor(mcontext.getResources(), R.color.notselected, null));
                 }
             }
@@ -181,10 +181,10 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
             public void onClick(View view) {
                 favtitles = fav.getTitles();
                 if (!favtitles.contains(marrayList.get(position).getMtitle())) {
-                    fav.put(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor());
+                    fav.put(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor(), marrayList.get(position).getmHumanAuthor());
                     holder.favbutton.setBackgroundColor(ResourcesCompat.getColor(mcontext.getResources(), R.color.colorAccent, null));
                 } else {
-                    fav.remove(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor());
+                    fav.remove(marrayList.get(position).getMtitle(), marrayList.get(position).getmImgUrl(), marrayList.get(position).getMdes(), marrayList.get(position).getmUrl(), marrayList.get(position).getmDateP(), marrayList.get(position).getMauthor(), marrayList.get(position).getmHumanAuthor());
                     holder.favbutton.setBackgroundColor(ResourcesCompat.getColor(mcontext.getResources(), R.color.notselected, null));
                 }
             }
@@ -213,7 +213,7 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
                 @Override
                 public void onError() {
                     parentswitcher(holder);
-                }
+                } // If there is no image of image failed to load we call parentswitcher to remove image view and change views location backgrounds etc...
             });
         }
         holder.openbrowser.setBackgroundColor(ResourcesCompat.getColor(mcontext.getResources(), R.color.notselected, null));
@@ -295,29 +295,39 @@ public class mAdapter  extends RecyclerView.Adapter<mAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        String data;
-        ImageView imgage;
+        String data; // date of article
+        ImageView imgage;//Image of article
         RelativeLayout rel;
-        LinearLayout datentime, newparent, frame;
+        LinearLayout datentime,
+                newparent,
+                frame;
         String[] parts;
-        TextView author, des, title, date, time;
-        ImageButton favbutton, laterbutton, openbrowser;
+        TextView author,
+                des,
+                title,
+                date,
+                time,
+                humanauthor;
+        ImageButton favbutton,
+                laterbutton,
+                openbrowser;
 
         private MyViewHolder(View itemView) {
             super(itemView);
-            favbutton = itemView.findViewById(R.id.favorites);
-            laterbutton = itemView.findViewById(R.id.later);
+            favbutton = itemView.findViewById(R.id.favorites); // Favorite button for marking article as favorite
+            laterbutton = itemView.findViewById(R.id.later); // Later button for marking aricle to read later
             title = itemView.findViewById(R.id.nameofarticle);
             author = itemView.findViewById(R.id.author);
-            des = itemView.findViewById(R.id.des);
+            des = itemView.findViewById(R.id.des); // Begining of an article
             imgage = itemView.findViewById(R.id.img);
             date = itemView.findViewById(R.id.date);
-            rel = itemView.findViewById(R.id.rel);
-            time = itemView.findViewById(R.id.time);
-            datentime = itemView.findViewById(R.id.datentime);
-            newparent = itemView.findViewById(R.id.newparent);
+            rel = itemView.findViewById(R.id.rel); // Image, source, date and time layout
+            time = itemView.findViewById(R.id.time); // time
+            datentime = itemView.findViewById(R.id.datentime); // Date and time layout
+            newparent = itemView.findViewById(R.id.newparent); // place where all views are put if there is no image or it failed to load
             frame = itemView.findViewById(R.id.mainLayout);
-            openbrowser = itemView.findViewById(R.id.openbrowser);
+            openbrowser = itemView.findViewById(R.id.openbrowser); // Dedicated button for opening browser
+            humanauthor = itemView.findViewById(R.id.humarauthor);
         }
     }
 }

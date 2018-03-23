@@ -22,19 +22,22 @@ import java.util.ArrayList;
  */
 
 public class FavFragment extends Fragment {
-    public FavFragment(){}
-    FAVORITEsave save;
+    FavoritesSave save;
     RecyclerView list;
     mAdapter adapter;
     WebView web;
     TextView errortext;
     ImageView closeweb;
     ImageView errorimage;
-    String imgurl,url,des,author,titles,date;
+    String imgurl, url, description, author, titles, date, humanauthor;
     ProgressBar pbar;
     SwipeRefreshLayout swipeRefreshLayout;
     RelativeLayout weblayout;
     ArrayList<article> favorites = new ArrayList<>();
+
+    public FavFragment() {
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.contentplace, container, false);
         createlist();
@@ -56,50 +59,49 @@ public class FavFragment extends Fragment {
         errortext = rootView.findViewById(R.id.alerttext);
         list.hasFixedSize();
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new mAdapter(getActivity(), favorites,weblayout,web,pbar,list,closeweb);
+        adapter = new mAdapter(getActivity(), favorites, weblayout, web, pbar, list, closeweb);
         list.setAdapter(adapter);
         isemptylist();
         return rootView;
     }
-    void refresh()
-    {
+
+    void refresh() {
         favorites.clear();
         createlist();
-        adapter = new mAdapter(getActivity(), favorites,weblayout,web,pbar,list,closeweb);
+        adapter = new mAdapter(getActivity(), favorites, weblayout, web, pbar, list, closeweb);
         list.setAdapter(adapter);
         swipeRefreshLayout.setRefreshing(false);
     }
-    void createlist()
-    {
-        save = new FAVORITEsave(getContext());
-        for(int i=0; i<save.size(); i++)
-        {
+
+    void createlist() {
+        save = new FavoritesSave(getContext());
+        for (int i = 0; i < save.size(); i++) {
             try {
-                imgurl= save.getImgUrls().get(i);
-                url= save.getUrl().get(i);
-                des= save.getDescription().get(i);
-                author= save.getAuthor().get(i);
-                titles= save.getTitles().get(i);
-                date= save.getDate().get(i);
-            }
-            catch (Exception e)
-            {
+                imgurl = save.getImgUrls().get(i);
+                url = save.getUrl().get(i);
+                description = save.getDescription().get(i);
+                author = save.getAuthor().get(i);
+                titles = save.getTitles().get(i);
+                date = save.getDate().get(i);
+                humanauthor = save.getHumanauthors().get(i);
+            } catch (Exception e) {
                 Log.i("Fav_Fragment", "Failed to get item from saved class");
             }
 
-            article thisarticle = new article(imgurl,url,des,author,titles,date);
+            article thisarticle = new article(imgurl, url, description, author, titles, date, humanauthor);
             favorites.add(thisarticle);
         }
     }
-    private void isemptylist()
-    {
-        if (favorites.isEmpty()||favorites == null||favorites.size()==0)
-        {
+
+    private void isemptylist() {
+        if (favorites.isEmpty() || favorites == null || favorites.size() == 0) {
             errorimage.setVisibility(View.VISIBLE);
             errortext.setVisibility(View.VISIBLE);
             errorimage.setImageResource(R.drawable.ic_saved);
             errortext.setText(R.string.no_saved);
+        } else {
+            errortext.setVisibility(View.GONE);
+            errorimage.setVisibility(View.GONE);
         }
-        else {errortext.setVisibility(View.GONE); errorimage.setVisibility(View.GONE);}
     }
 }

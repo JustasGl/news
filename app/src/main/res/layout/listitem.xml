@@ -1,126 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:foreground="?attr/selectableItemBackground"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/listcolor"
+    android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/averageOfpaddingnmargin"
-    >
+    android:paddingBottom="@dimen/averageOfpaddingnmargin">
+
     <LinearLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mainLayout"
-        android:orientation="vertical"
-        >
-    <RelativeLayout
-        android:id="@+id/rel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/articlesimageheight">
-<ImageView
-    android:id="@+id/img"
-    android:layout_width="match_parent"
-    android:scaleType="centerCrop"
-    android:layout_height="@dimen/articlesimageheight"
-    xmlns:tools="http://schemas.android.com/tools" />
-        <TextView
-        android:id="@+id/author"
-        style="@style/matchnwrap"
-        android:textColor="@color/textcolofSource"
-        android:layout_alignParentBottom="true"
-        android:background="@color/backoftimedatensource"
-        android:paddingLeft="@dimen/averageOfpaddingnmargin"/>
-        <LinearLayout
-            android:id="@+id/datentime"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            style="@style/wrapnwrap"
-            android:orientation="vertical">
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/articlesimageheight">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/articlesimageheight"
+                android:scaleType="centerCrop" />
+
             <TextView
-            android:id="@+id/time"
+                android:id="@+id/author"
+                style="@style/matchnwrap"
+                android:layout_alignParentBottom="true"
                 android:background="@color/backoftimedatensource"
-                style="@style/wrapnwrap"
                 android:paddingLeft="@dimen/averageOfpaddingnmargin"
-                android:paddingRight="@dimen/averageOfpaddingnmargin"
-                android:textAlignment="center"
-            android:textColor="#c7ffffff" />
-        <TextView
-            android:id="@+id/date"
-            style="@style/wrapnwrap"
-            android:paddingRight="@dimen/paddingofdateRightnLKeft"
-            android:paddingLeft="@dimen/paddingofdateRightnLKeft"
-            android:textColor="@color/textcolorofdate"
-            android:textAlignment="center" />
+                android:textColor="@color/textcolofSource" />
+
+            <LinearLayout
+                android:id="@+id/datentime"
+                style="@style/wrapnwrap"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time"
+                    style="@style/wrapnwrap"
+                    android:background="@color/backoftimedatensource"
+                    android:paddingLeft="@dimen/averageOfpaddingnmargin"
+                    android:paddingRight="@dimen/averageOfpaddingnmargin"
+                    android:textAlignment="center"
+                    android:textColor="#c7ffffff" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="@style/wrapnwrap"
+                    android:paddingLeft="@dimen/paddingofdateRightnLKeft"
+                    android:paddingRight="@dimen/paddingofdateRightnLKeft"
+                    android:textAlignment="center"
+                    android:textColor="@color/textcolorofdate" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/newparent"
+            style="@style/matchnwrap"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameofarticle"
+                style="@style/matchnwrap"
+                android:layout_marginLeft="@dimen/averageOfpaddingnmargin"
+                android:layout_marginRight="@dimen/averageOfpaddingnmargin"
+                android:layout_marginTop="@dimen/averageOfpaddingnmargin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nameofArticle" />
 
         </LinearLayout>
-</RelativeLayout>
-    <LinearLayout
-        style="@style/matchnwrap"
-        android:id="@+id/newparent"
-        android:orientation="vertical">
-    <TextView
-        android:id="@+id/nameofarticle"
-        style="@style/matchnwrap"
-        android:textSize="@dimen/nameofArticle"
-        android:textColor="@color/black"
-        android:layout_marginLeft="@dimen/averageOfpaddingnmargin"
-        android:layout_marginRight="@dimen/averageOfpaddingnmargin"
-        android:layout_marginTop="@dimen/averageOfpaddingnmargin" />
 
+        <TextView
+            android:id="@+id/des"
+            style="@style/matchnwrap"
+            android:layout_marginLeft="@dimen/plusaverageofpaddingnmargin"
+            android:layout_marginRight="@dimen/averageOfpaddingnmargin"
+            android:textColor="@color/colorofdes" />
+
+        <TextView
+            android:id="@+id/humarauthor"
+            style="@style/matchnwrap"
+            android:layout_marginLeft="@dimen/plusaverageofpaddingnmargin"
+            android:layout_marginRight="@dimen/averageOfpaddingnmargin"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
     </LinearLayout>
-    <TextView
-    android:id="@+id/des"
-    android:layout_marginLeft="@dimen/plusaverageofpaddingnmargin"
-    android:layout_marginRight="@dimen/averageOfpaddingnmargin"
-    style="@style/matchnwrap"
-    android:textColor="@color/colorofdes"/>
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/averageOfpaddingnmargin">
 
         <ImageButton
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
             android:id="@+id/favorites"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
             android:paddingBottom="@dimen/averageOfpaddingnmargin"
             android:paddingTop="@dimen/averageOfpaddingnmargin"
             android:src="@drawable/ic_save" />
+
         <LinearLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/white"/>
+            android:background="@color/white" />
+
         <ImageButton
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
+            android:id="@+id/later"
             android:layout_width="0dp"
-            android:src="@drawable/ic_later"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingTop="@dimen/averageOfpaddingnmargin"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
             android:paddingBottom="@dimen/averageOfpaddingnmargin"
-            android:id="@+id/later"/>
+            android:paddingTop="@dimen/averageOfpaddingnmargin"
+            android:src="@drawable/ic_later" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
+
     <ImageButton
-        android:clickable="true"
-        android:background="?attr/selectableItemBackground"
         android:id="@+id/openbrowser"
-        android:paddingTop="@dimen/averageOfpaddingnmargin"
-        android:paddingBottom="@dimen/averageOfpaddingnmargin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingBottom="@dimen/averageOfpaddingnmargin"
+        android:paddingTop="@dimen/averageOfpaddingnmargin"
         android:src="@drawable/ic_browser" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/seperatorcolor"/>
+        android:background="@color/seperatorcolor" />
 </LinearLayout>

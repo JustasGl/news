@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/mybutton"
-        android:title="add"
-        app:showAsAction="always"
         android:checkable="true"
         android:icon="@drawable/ic_subscribe"
-        />
+        android:title="add"
+        app:showAsAction="always" />
     <item
         android:id="@+id/minusbutton"
-        android:title="minus"
-        app:showAsAction="always"
         android:checkable="true"
         android:icon="@drawable/ic_minus"
-        />
+        android:title="minus"
+        app:showAsAction="always" />
 </menu>

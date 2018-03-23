@@ -3,25 +3,20 @@ package com.example.android.news;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 /**
  * Created by Justas on 2/19/2018.
  */
 
-public class FragmentOtherToicsAdaptor  extends FragmentStatePagerAdapter {
+public class FragmentOtherToicsAdaptor extends FragmentStatePagerAdapter {
 
-    private Context mContext;
 
     public FragmentOtherToicsAdaptor(Context context, FragmentManager fm) {
         super(fm);
-        mContext = context;
     }
+
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
@@ -32,9 +27,9 @@ public class FragmentOtherToicsAdaptor  extends FragmentStatePagerAdapter {
             return new health_fragment();
         } else if (position == 3)
             return new science_fragment();
-     else if (position == 4)
+        else if (position == 4)
             return new sports_fragment();
-     else if (position == 5)
+        else if (position == 5)
             return new technology_fragment();
         return null;
     }
@@ -43,6 +38,7 @@ public class FragmentOtherToicsAdaptor  extends FragmentStatePagerAdapter {
     public int getCount() {
         return 6;
     }
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         super.destroyItem(container, position, object);

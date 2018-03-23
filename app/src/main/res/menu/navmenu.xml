@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/mainscreen" android:title="@string/Main" android:icon="@mipmap/ic_trending_up_black_24dp"/>
-    <item android:id="@+id/browse" android:title="@string/browse" android:icon="@drawable/browsing"/>
-    <item android:id="@+id/favnlat" android:title="@string/favorites_watch_later" android:icon="@drawable/ic_favlater"/>
-    <item android:id="@+id/othertopics" android:title="@string/other" android:icon="@mipmap/ic_view_carousel_black_24dp"/>
-    <item android:id="@+id/credits" android:title="@string/Credits" android:icon="@mipmap/ic_person_outline_black_24dp"/>
+    <item
+        android:id="@+id/mainscreen"
+        android:icon="@mipmap/ic_trending_up_black_24dp"
+        android:title="@string/Main" />
+    <item
+        android:id="@+id/browse"
+        android:icon="@drawable/browsing"
+        android:title="@string/browse" />
+    <item
+        android:id="@+id/favnlat"
+        android:icon="@drawable/ic_favlater"
+        android:title="@string/favorites_watch_later" />
+    <item
+        android:id="@+id/othertopics"
+        android:icon="@mipmap/ic_view_carousel_black_24dp"
+        android:title="@string/other" />
+    <item
+        android:id="@+id/credits"
+        android:icon="@mipmap/ic_person_outline_black_24dp"
+        android:title="@string/Credits" />
 
 </menu>

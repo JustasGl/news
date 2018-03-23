@@ -1,9 +1,6 @@
 package com.example.android.news;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,13 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,11 +27,9 @@ import java.util.List;
  * Created by Justas on 2/19/2018.
  */
 
-public class sports_fragment extends Fragment implements  LoaderManager.LoaderCallbacks<List<article>> {
-    String country="",test="";
+public class sports_fragment extends Fragment implements LoaderManager.LoaderCallbacks<List<article>> {
+    String country = "", test = "";
     WebView web;
-    public sports_fragment() {
-    }
     SwipeRefreshLayout swipeRefreshLayout;
     mAdapter adapter;
     int LoaderID = 6;
@@ -48,9 +38,14 @@ public class sports_fragment extends Fragment implements  LoaderManager.LoaderCa
     ImageView errorimage;
     RecyclerView list;
     ImageView closeweb;
-    Animation zoomin,zoomout;
+    Animation zoomin, zoomout;
     RelativeLayout weblayout;
     String URL = "https://newsapi.org/v2/top-headlines?";
+    private TextView emptyView;
+
+    public sports_fragment() {
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.contentplace, container, false);
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh);
@@ -67,6 +62,7 @@ public class sports_fragment extends Fragment implements  LoaderManager.LoaderCa
         web = rootView.findViewById(R.id.webview);
         pbar = rootView.findViewById(R.id.pB1);
         errorimage = rootView.findViewById(R.id.alertpic);
+        emptyView = rootView.findViewById(R.id.empty_view);
         closeweb = rootView.findViewById(R.id.closeweb);
         errortext = rootView.findViewById(R.id.alerttext);
         list = rootView.findViewById(R.id.recyclerview);
@@ -75,32 +71,35 @@ public class sports_fragment extends Fragment implements  LoaderManager.LoaderCa
         isinternet();
         return rootView;
     }
+
     public void onResume() {
         super.onResume();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         test = sharedPrefs.getString(getString(R.string.Country), getString(R.string.Country_default));
-        if(!test.equals(country)&& !test.equals("")) {
+        if (!test.equals(country) && !test.equals("")) {
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.restartLoader(LoaderID, null, this);
         }
     }
-    private void isinternet()
-    {
-        if (!Utils.isNetworkAvailable(getContext()))
-        {
+
+    private void isinternet() {
+        if (!Utils.isNetworkAvailable(getContext())) {
             errorimage.setVisibility(View.VISIBLE);
             errortext.setVisibility(View.VISIBLE);
             errorimage.setImageResource(R.drawable.country);
             errortext.setText(R.string.no_internet);
+        } else {
+            errortext.setVisibility(View.GONE);
+            errorimage.setVisibility(View.GONE);
         }
-        else {errortext.setVisibility(View.GONE); errorimage.setVisibility(View.GONE);}
     }
-    public void refresh()
-    {
+
+    public void refresh() {
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(LoaderID, null, this);
 
     }
+
     @Override
     public Loader<List<article>> onCreateLoader(int i, Bundle bundle) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -112,7 +111,7 @@ public class sports_fragment extends Fragment implements  LoaderManager.LoaderCa
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         uriBuilder.appendQueryParameter(getString(R.string.country), country);
-        uriBuilder.appendQueryParameter(getString(R.string.category),  getActivity().getString(R.string.Sports));
+        uriBuilder.appendQueryParameter(getString(R.string.category), getActivity().getString(R.string.Sports));
         uriBuilder.appendQueryParameter(getString(R.string.apiKey), getString(R.string.apikeyValue));
         return new articleLoader(getActivity(), uriBuilder.toString());
     }
@@ -121,19 +120,26 @@ public class sports_fragment extends Fragment implements  LoaderManager.LoaderCa
     public void onLoadFinished(Loader<List<article>> loader, List<article> articles) {
         swipeRefreshLayout.setRefreshing(false);
         ArrayList<article> artcl = (ArrayList<article>) articles;
-        adapter = new mAdapter(getActivity(), artcl,weblayout,web,pbar,list,closeweb);
-        list.setAdapter(adapter);
+        if (artcl != null) {
+            if (artcl.isEmpty()) {
+                list.setVisibility(View.GONE);
+                emptyView.setVisibility(View.VISIBLE);
+            } else {
+                adapter = new mAdapter(getActivity(), artcl, weblayout, web, pbar, list, closeweb);
+                list.setAdapter(adapter);
+            }
+        }
     }
+
     @Override
     public void onLoaderReset(Loader<List<article>> loader) {
     }
+
     public boolean onBackPressed() {
-        if(adapter.isactiveweb())
-        {
+        if (adapter.isactiveweb()) {
             adapter.clearwebview();
             return true;
-        }
-        else
+        } else
             return false;
     }
 }

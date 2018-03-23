@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="@dimen/heightofNavHEADER"
-    android:background="@color/black"
->
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/heightofNavHEADER"
+    android:background="@color/black">
+
     <TextView
         style="@style/wrapnwrap"
         android:layout_centerInParent="true"
         android:text="@string/app_name"
-        android:textSize="@dimen/sizeofSourceTITLE"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/sizeofSourceTITLE" />
 </RelativeLayout>

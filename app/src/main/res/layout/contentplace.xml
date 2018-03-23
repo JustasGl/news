@@ -4,28 +4,31 @@
     android:id="@+id/confirm_order_mail_layout"
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/alertpic"
-            android:tint="@color/errortext"
-            android:layout_centerInParent="true"/>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:id="@+id/alerttext"
-            android:textAlignment="center"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             android:layout_centerInParent="true"
+            android:tint="@color/errortext" />
+
+        <TextView
+            android:id="@+id/alerttext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/alertpic"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/paddingaverage"
+            android:paddingRight="@dimen/paddingaverage"
+            android:textAlignment="center"
             android:textColor="@color/errortext"
-            />
+            android:textSize="@dimen/textoferror" />
     </RelativeLayout>
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/confirm_order_appbar_layout"
         android:layout_width="match_parent"
@@ -46,41 +49,53 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swiperefresh"
         style="@style/matchnmatch">
+
         <android.support.v7.widget.RecyclerView
-            style="@style/matchnmatch"
             android:id="@+id/recyclerview"
-            />
+            style="@style/matchnmatch" />
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data_available" />
     </android.support.v4.widget.SwipeRefreshLayout>
+
     <RelativeLayout
+        android:id="@+id/weblayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/weblayout"
-        android:visibility="gone"
-        android:background="@color/backgroundofWebview">
+        android:background="@color/backgroundofWebview"
+        android:visibility="gone">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/sizeOfWebview"
             android:layout_centerInParent="true">
-        <WebView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/sizeOfWebview"
-        android:layout_centerInParent="true"
-        android:id="@+id/webview"/>
 
-        <ProgressBar android:id="@+id/pB1"
-            style="?android:attr/progressBarStyleHorizontal" android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:layout_below="@id/webview"
-            android:layout_marginTop="-4dp">
-        </ProgressBar>
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sizeOfWebview"
+                android:layout_centerInParent="true" />
+
+            <ProgressBar
+                android:id="@+id/pB1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/webview"
+                android:layout_marginTop="-4dp" />
+
             <ImageView
+                android:id="@+id/closeweb"
                 style="@style/wrapnwrap"
-                android:src="@drawable/ic_close"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/closeweb"/>
+                android:contentDescription="@string/exitimage"
+                android:src="@drawable/ic_close" />
         </RelativeLayout>
     </RelativeLayout>
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

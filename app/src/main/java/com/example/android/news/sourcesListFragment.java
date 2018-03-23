@@ -1,8 +1,5 @@
 package com.example.android.news;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -13,25 +10,14 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
-import android.webkit.WebView;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,22 +26,24 @@ import java.util.List;
  * Created by Justas on 2/28/2018.
  */
 
-public class sourcesListFragment extends Fragment implements  LoaderManager.LoaderCallbacks<List<browseObject>> {
-    public sourcesListFragment(){
-    }
+public class sourcesListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<browseObject>> {
     private static final String BUNDLE_RECYCLER_LAYOUT = "sourcesListFragment.recycler.layout";
-    String URL="https://newsapi.org/v2/sources?apiKey=5f539f96f2b34e40a12a38ceaa6865b9";
-    RecyclermAdaptor adapter;
+    String URL = "https://newsapi.org/v2/sources?apiKey=5f539f96f2b34e40a12a38ceaa6865b9";
     int LoaderID = 6;
     SwipeRefreshLayout swipe;
     ProgressBar pbar;
     TextView errortext;
     ImageView errorimage;
-    Animation zoomin,zoomout;
+    Animation zoomin, zoomout;
     RecyclerView list;
     RelativeLayout weblayout;
-    RecyclermAdaptor recycleradaptor;
-    boolean loaded=false;
+    BrowseRecyclerAdaptor recycleradaptor;
+    boolean loaded = false;
+    private TextView emptyView;
+
+    public sourcesListFragment() {
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.contentplace, container, false);
@@ -63,7 +51,7 @@ public class sourcesListFragment extends Fragment implements  LoaderManager.Load
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loaded=false;
+                loaded = false;
                 refresh();
                 isinternet();
             }
@@ -72,38 +60,41 @@ public class sourcesListFragment extends Fragment implements  LoaderManager.Load
         list.hasFixedSize();
         errorimage = rootView.findViewById(R.id.alertpic);
         errortext = rootView.findViewById(R.id.alerttext);
+        emptyView = rootView.findViewById(R.id.empty_view);
         list.setLayoutManager(new LinearLayoutManager(getContext()));
         createloadermanaer();
         isinternet();
         return rootView;
     }
-    public void refresh()
-    {
+
+    public void refresh() {
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(LoaderID, null, this);
 
     }
-    private void isinternet()
-    {
-        if (!Utils.isNetworkAvailable(getContext()))
-        {
+
+    private void isinternet() {
+        if (!Utils.isNetworkAvailable(getContext())) {
             errorimage.setVisibility(View.VISIBLE);
             errortext.setVisibility(View.VISIBLE);
             errorimage.setImageResource(R.drawable.country);
             errortext.setText(R.string.no_internet);
+        } else {
+            errortext.setVisibility(View.GONE);
+            errorimage.setVisibility(View.GONE);
         }
-        else {errortext.setVisibility(View.GONE); errorimage.setVisibility(View.GONE);}
     }
-    public void createloadermanaer(){
+
+    public void createloadermanaer() {
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(LoaderID, null, this);
     }
+
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
 
-        if(savedInstanceState != null)
-        {
+        if (savedInstanceState != null) {
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
             list.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
         }
@@ -114,6 +105,7 @@ public class sourcesListFragment extends Fragment implements  LoaderManager.Load
         super.onSaveInstanceState(outState);
         outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, list.getLayoutManager().onSaveInstanceState());
     }
+
     @Override
     public Loader<List<browseObject>> onCreateLoader(int id, Bundle args) {
         Uri baseUri = Uri.parse(URL);
@@ -126,14 +118,23 @@ public class sourcesListFragment extends Fragment implements  LoaderManager.Load
     @Override
     public void onLoadFinished(Loader<List<browseObject>> loader, List<browseObject> objects) {
         swipe.setRefreshing(false);
-        if(!loaded) {
-            ArrayList<browseObject> object = (ArrayList<browseObject>) objects;
-            recycleradaptor = new RecyclermAdaptor(getContext(), object);
-            list.setAdapter(recycleradaptor);
-            loaded=true;
+        if (!loaded) {
+            ArrayList<browseObject> artcl = (ArrayList<browseObject>) objects;
+            if (artcl != null) {
+                if (artcl.isEmpty()) {
+                    list.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    recycleradaptor = new BrowseRecyclerAdaptor(getContext(), artcl);
+                    list.setAdapter(recycleradaptor);
+                }
+            }
+            loaded = true;
         }
     }
+
     @Override
-    public void onLoaderReset(Loader<List<browseObject>> loader) {}
+    public void onLoaderReset(Loader<List<browseObject>> loader) {
+    }
 
 }
